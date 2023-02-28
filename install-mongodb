@@ -1,0 +1,27 @@
+   25  wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
+   //get apt-key depriciated so i do: -
+   26  wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc |  gpg --dearmor | sudo tee /usr/share/keyrings/mongodb.gpg > /dev/null
+   27  echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+   28  sudo apt update
+   29  sudo apt install mongodb-org
+   30  monogd
+   31  mongod
+   32  ps --no-headers -o comm 1
+   33  sudo systemctl start mongod
+   34  sudo systemctl status mongod
+   35  sudo systemctl enable mongod
+   36  sudo systemctl status mongod
+   37  sudo systemctl daemon-reload
+   38  sudo systemctl enable mongod
+   39  sudo systemctl status mongod
+//error 
+//reinstall by following command 
+
+   48  sudo service mongod stop
+   49  sudo apt-get purge mongodb-org*
+   50  sudo rm -r /var/log/mongodb
+   51  sudo rm -r /var/lib/mongodb
+   52  sudo apt-get install -y mongodb-org
+   53  sudo systemctl start mongod
+   54  sudo systemctl status mongod
+//now its working
