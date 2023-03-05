@@ -1,0 +1,24 @@
+got error+solution
+566  sudo npm install -g @angular/cli
+  567  node helper
+  568  Node helper
+  569  n
+  570  sudo npm cache clean -f
+  571  sudo npm install -g @angular/cli
+  572  ng --version
+  573  npm install -g npm
+  574  sudo npm install -g npm
+  575  npm install -g node
+  576  sudo npm install -g node
+  577  sudo n lts
+  578  sudo npm install -g @angular/cli
+  579  ng --version
+  580  npm uninstall -g @angular/cli
+  581  sudo npm uninstall -g @angular/cli
+  582  ng verion
+  583  sudo npm install -g @angular/cli
+  584  ng version
+  585  ng new project
+  586  ng serve
+  587  cd project
+  588  ng serve
