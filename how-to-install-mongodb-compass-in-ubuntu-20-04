@@ -1,0 +1,16 @@
+																									How to Install MongoDB Compass in Ubuntu 20.04
+
+
+Step 1: Download the MongoDB compass .deb file 
+The MongoDB compass application is not present for installation in the official Ubuntu repository. But, you can install the MongoDB compass application by downloading the .deb packages from its  official download page using the ‘wget’ utility:
+
+$ wget https://downloads.mongodb.com/compass/mongodb-compass_1.28.1_amd64.deb
+
+Step 2: Install the .deb file 
+Once the .deb file is downloaded to your system, you can easily install the .deb file packages on your system by running the following command:
+
+
+$ sudo apt install ./mongodb-compass_1.28.1_amd64.deb
+
+Step 3: Launch MongoDB Compass on Ubuntu 20.04
+Once the installation of the MongoDB compass is completed, you can launch the MongoDB compass interface on your system using the application search bar.
