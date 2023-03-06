@@ -1,0 +1,123 @@
+OPEN MONGO SHELL BY THE FOLLOWING COMMAND IN CLI
+monika@monika-IdeaPad-Gaming-3-15ACH6:~$ mongosh
+Current Mongosh Log ID:	64061e77e38f64740ffdc893
+Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.0
+Using MongoDB:		6.0.4
+Using Mongosh:		1.8.0
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2023-03-06T20:04:14.513+05:30: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2023-03-06T20:04:14.810+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2023-03-06T20:04:14.811+05:30: vm.max_map_count is too low
+------
+
+------
+   Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+   metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+   
+   The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+   and anyone you share the URL with. MongoDB may use this information to make product
+   improvements and to suggest MongoDB products and deployment options to you.
+   
+   To enable free monitoring, run the following command: db.enableFreeMonitoring()
+   To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+------
+
+
+//OUTPUT OF MONGOSH
+//DATABASE>
+
+//db-USE TO SEE CURRENT DATA BASE WHICH IS USED
+test> db
+test
+
+//show dbs-USE TO SEE ALL THE DATABASES
+//DEFAULT DATABASE -- ADMIN,LOCAL,TEST
+test> show dbs
+admin    40.00 KiB
+config  108.00 KiB
+local    72.00 KiB
+test      8.00 KiB
+
+
+//USE ANOTHER DATABASE
+test> use config
+switched to db config
+
+//SHOW ALL THE COLLECTIONS
+config> show collections
+system.sessions
+
+//CREATE THE COLLECTION
+config> db.createCollection('courses')
+{ ok: 1 }
+
+//INSERT FIELDS IN COLLECTION
+config> db.courses.insertOne(
+... {
+... name : "monika verma",
+... price : 500
+... }
+... )
+{
+  acknowledged: true,
+  insertedId: ObjectId("64061f0cf78e31974f09bcfe")
+}
+config> db.courses.insert(
+... {name:"user1",price:100},
+... 
+
+
+
+config> db.courses.insert(
+... 
+... {name:"user1",price:100},
+... 
+... {name:"user2",price:200},
+... 
+... {name:"user3",price:300})
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId("64061fbef78e31974f09bcff") }
+}
+config> 
+
+//SELECT QUERY TO DISPLAY ALL THE DOCUMENTS AND ONE DOCUMENT
+config> db.courses.findOne()
+{
+  _id: ObjectId("64061f0cf78e31974f09bcfe"),
+  name: 'monika verma',
+  price: 500
+}
+config> db.courses.find()
+[
+  {
+    _id: ObjectId("64061f0cf78e31974f09bcfe"),
+    name: 'monika verma',
+    price: 500
+  },
+  {
+    _id: ObjectId("64061fbef78e31974f09bcff"),
+    name: 'user1',
+    price: 100
+  }
+]
+
+//DISPLAY IN JSON FORMAT--(?)
+config> db.courses.find().pretty()
+[
+  {
+    _id: ObjectId("64061f0cf78e31974f09bcfe"),
+    name: 'monika verma',
+    price: 500
+  },
+  {
+    _id: ObjectId("64061fbef78e31974f09bcff"),
+    name: 'user1',
+    price: 100
+  }
+]
