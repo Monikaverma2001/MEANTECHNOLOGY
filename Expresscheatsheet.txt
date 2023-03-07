@@ -1,0 +1,32 @@
+what is an express?
+it is a server-side framework when we usee Node js for server.
+
+how to install express?
+must visit my page how to install node and npm. after that you have to write only the following command:-
+sudo npm install express --save
+in this way, the express dependency added to you package manager.
+
+what is npm?
+
+
+
+
+
+Hello world example--
+
+const express = require('express');
+//require the package of express from nodejs module 
+const app = express();
+//create app of express
+const port = 3000;
+//initialized a port Remember that port must be not already defin0e.
+//define route and request response function if the route is '/' request send response 'hello world'.
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+});
+//list this app at port show on console if it work properly
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+});
+//in cmd --  $npm start
+//try it on your favourite browser--      http://localhost:3000/
