@@ -1,16 +1,13 @@
-<h1>Learn Login Page </h1>
-<h2>TECHNOLOGY USED : MONGODB , NODE , EXPRESS</h2>
-<p>
-<hr>
-<div>pre-require : install npm , node, express and mongodb</div><br> 
+Learn Login Page 
+TECHNOLOGY USED : MONGODB , NODE , EXPRESS
 
-<ul>
-    <li>npm install hbs</li>
-    <ul>make following</ul>
+pre-require : install npm , node, express and mongodb
+
+    npm install hbs
+    make following
 
 
-   <div>define routes.js</div>
-   <div>
+define routes.js
     // module.exports = (app) => {
         // 	const App = require("../controllers/app.controller");
           
@@ -29,24 +26,24 @@
         
         
         
-         var app = require("express").Router();<br>
-         var path=require('path');<br>
+         var app = require("express").Router();
+         var path=require('path');
         
-         var mongoose = require ( 'mongoose' );<br>
-         var db = require ( '../config/db' );<br>
+         var mongoose = require ( 'mongoose' );
+         var db = require ( '../config/db' );
         
-        console.log ( "connecting--" , db );<br>
-        mongoose.connect ( db.url ); //Mongoose connection created<br>
-        const express = require ( 'express' );<br>
+        console.log ( "connecting--" , db );
+        mongoose.connect ( db.url ); //Mongoose connection created
+        const express = require ( 'express' );
         
-        const Student=require('../app/models/student');<br>
-        const appp = express ();<br>
+        const Student=require('../app/models/student');
+        const appp = express ();
         const bodyParser = require('body-parser');
-        appp.use(bodyParser.urlencoded({ extended: true }));<br>
+        appp.use(bodyParser.urlencoded({ extended: true }));
         
-        appp.use(bodyParser.json());<br>
-        appp.use(express.json());<br>
-        appp.use(express.urlencoded({extended:false}))<br>
+        appp.use(bodyParser.json());
+        appp.use(express.json());
+        appp.use(express.urlencoded({extended:false}))
         
         
         app . get ( '/' , ( req , res ) => //res . send ( 'Welcome to Tutorialspoint!' )<br>
@@ -61,7 +58,6 @@
              //res.sendFile(path.join(__dirname, './login.html'));
         });
         
-        <br>
         
         // app.get('/welcome',(req,res)=>{
         // 	var data=Student.find ( function ( err , Student ) {
@@ -73,7 +69,6 @@
         // 		});
         // });
         
-        <br><br>
         //show database collection
         async function getItems(){
         
@@ -81,7 +76,7 @@
             return Items;
           
           }
-          <br>
+      
           app.get("/welcome", function (req, res) {
           
             getItems().then(function(FoundItems){
@@ -92,7 +87,7 @@
           
           });
         
-        <br>
+   
         
         app.get('/api/students', async (req, res) => {
                 const allUsers = await Student.find()
@@ -103,7 +98,7 @@
                 });
                 res.json ( allUsers );
         });
-        <br>
+     
         app.get('/delete',function(req,res){
             if(res.status==200)
             {
@@ -115,7 +110,7 @@
                 //res.sendFile(path.join(__dirname, '../AnyError.html'));
             }
         });
-        <br>
+    
         app.get('/update',function(req,res){
             if(res.status==200)
             {
@@ -127,13 +122,13 @@
                 res.sendFile(path.join(__dirname, '../AnyError.html'));
             }
         });
-        <br>
+     
         app.get('/add',function(req,res){
             res.send("added");
             res.sendFile(path.join(__dirname, '../view/login.html'));
         
         });
-        <br>
+     
         app.post('/login',async(req,res)=>{
             const data={
                 name:req.body.name,
@@ -145,15 +140,7 @@
             res.sendFile(path.join(__dirname,'../view/index.html'));
         });
         
-        
-        <br>
-        
+     
         
         module.exports = app;
 
-
-   </div>
-</ul>
-
-
-</p>
