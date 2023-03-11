@@ -4,7 +4,156 @@
 <hr>
 <div>pre-require : install npm , node, express and mongodb</div><br> 
 
+<ul>
+    <li>npm install hbs</li>
+    <ul>make following</ul>
 
+
+   <div>define routes.js</div>
+   <div>
+    // module.exports = (app) => {
+        // 	const App = require("../controllers/app.controller");
+          
+        // 	app.post("/create", App.create);
+          
+        // 	app.get("/get-all", App.findAll);
+          
+        // 	app.get("/message/:messageId", App.findOne);
+          
+        // 	app.put("/message/:messageId", App.update);
+          
+        // 	app.delete("/message/:messageId", App.delete);<br>
+        //   };
+        
+        
+        
+        
+        
+         var app = require("express").Router();<br>
+         var path=require('path');<br>
+        
+         var mongoose = require ( 'mongoose' );<br>
+         var db = require ( '../config/db' );<br>
+        
+        console.log ( "connecting--" , db );<br>
+        mongoose.connect ( db.url ); //Mongoose connection created<br>
+        const express = require ( 'express' );<br>
+        
+        const Student=require('../app/models/student');<br>
+        const appp = express ();<br>
+        const bodyParser = require('body-parser');
+        appp.use(bodyParser.urlencoded({ extended: true }));<br>
+        
+        appp.use(bodyParser.json());<br>
+        appp.use(express.json());<br>
+        appp.use(express.urlencoded({extended:false}))<br>
+        
+        
+        app . get ( '/' , ( req , res ) => //res . send ( 'Welcome to Tutorialspoint!' )<br>
+        res.sendFile(path.join(__dirname, '../view/login.html')));<br>
+        
+        app . get ( '/register' , ( req , res ) => //res . send ( 'Welcome to Tutorialspoint!' )<br>
+        res.sendFile(path.join(__dirname, '../view/register.html')));
+        
+        <br>
+        app . get ( '/tproute' , ( req , res  ) =>{
+             res . send ( 'This is routing for the application developed using Node and Express...' )
+             //res.sendFile(path.join(__dirname, './login.html'));
+        });
+        
+        <br>
+        
+        // app.get('/welcome',(req,res)=>{
+        // 	var data=Student.find ( function ( err , Student ) {
+        // 		// if there is an error retrieving, send the error.
+        // 		// nothing after res.send(err) will execute
+        // 		if ( err )
+        // 		res . send ( err );
+        // 		res . json ( Student ); // return all students in JSON format
+        // 		});
+        // });
+        
+        <br><br>
+        //show database collection
+        async function getItems(){
+        
+            const Items = await Student.find({});
+            return Items;
+          
+          }
+          <br>
+          app.get("/welcome", function (req, res) {
+          
+            getItems().then(function(FoundItems){
+              
+              res.send(FoundItems);
+          
+            });
+          
+          });
+        
+        <br>
+        
+        app.get('/api/students', async (req, res) => {
+                const allUsers = await Student.find()
+                res.status(200).send({
+                
+                  //status: 'Success',
+                  //data: allUsers,
+                });
+                res.json ( allUsers );
+        });
+        <br>
+        app.get('/delete',function(req,res){
+            if(res.status==200)
+            {
+                res.send("deltelted");
+            }
+            else
+            {
+                res.send("delted");
+                //res.sendFile(path.join(__dirname, '../AnyError.html'));
+            }
+        });
+        <br>
+        app.get('/update',function(req,res){
+            if(res.status==200)
+            {
+                res.send("updated");
+            }
+            else
+            {
+                res.send("updated");
+                res.sendFile(path.join(__dirname, '../AnyError.html'));
+            }
+        });
+        <br>
+        app.get('/add',function(req,res){
+            res.send("added");
+            res.sendFile(path.join(__dirname, '../view/login.html'));
+        
+        });
+        <br>
+        app.post('/login',async(req,res)=>{
+            const data={
+                name:req.body.name,
+                email:req.body.email,
+                phone:req.body.phone,
+                place:req.body.place,
+            }
+            await Student.insertMany([data]);
+            res.sendFile(path.join(__dirname,'../view/index.html'));
+        });
+        
+        
+        <br>
+        
+        
+        module.exports = app;
+
+
+   </div>
+</ul>
 
 
 </p>
