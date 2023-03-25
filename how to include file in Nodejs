@@ -1,0 +1,6 @@
+inculde index.js in home.js
+
+in home.js use require statement 
+:require('path);
+in index.js 
+:module.exports=objectname
