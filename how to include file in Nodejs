@@ -4,3 +4,11 @@ in home.js use require statement
 :require('path);
 in index.js 
 :module.exports=objectname
+
+In node js there is concept of module wrapper function
+(function(export,require,module,filename,dirname)
+{
+//code of index.js or home.js
+})
+the above is already defined no need to explicitly define above function,you can use parameters directly
+there are various module which is in-built  like os,path module to check freememory etc 
